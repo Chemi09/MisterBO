@@ -4,12 +4,12 @@ export function formatCDF(amount: number): string {
 
 export const WHATSAPP_NUMBER = "243817581034";
 export const BRAND = {
-  name: "HB Cosmétique",
+  name: "MISTER BO SAVONS NATURELS",
   product: "Savon Mister Bo",
   tagline: "100% BIO",
   phone: "+243 817 581 034",
   whatsapp: WHATSAPP_NUMBER,
-  instagram: "HB_COSMETIQUE",
+  instagram: "misterbo_savons",
   city: "Kinshasa",
   country: "République Démocratique du Congo",
 };
