@@ -1,0 +1,117 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-curcuma: var(--curcuma);
+  --color-gold: var(--gold);
+  --color-leaf: var(--leaf);
+  --color-cream: var(--cream);
+
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Brand palette inspired by Mister Bo packaging */
+  --cream: oklch(0.97 0.018 75);            /* warm cream background */
+  --curcuma: oklch(0.73 0.165 55);          /* turmeric orange */
+  --gold: oklch(0.78 0.13 85);              /* warm gold */
+  --leaf: oklch(0.36 0.06 195);             /* deep teal-green from leaves */
+  --leaf-soft: oklch(0.88 0.04 195);        /* soft teal accent */
+
+  --background: oklch(0.985 0.012 75);
+  --foreground: oklch(0.20 0.04 195);
+
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--foreground);
+
+  --primary: var(--leaf);
+  --primary-foreground: oklch(0.98 0.01 75);
+
+  --secondary: var(--cream);
+  --secondary-foreground: var(--leaf);
+
+  --muted: oklch(0.95 0.015 75);
+  --muted-foreground: oklch(0.45 0.03 195);
+
+  --accent: var(--curcuma);
+  --accent-foreground: oklch(0.99 0.005 75);
+
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --border: oklch(0.90 0.02 75);
+  --input: oklch(0.92 0.018 75);
+  --ring: var(--curcuma);
+
+  --font-display: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --gradient-hero: linear-gradient(135deg, oklch(0.97 0.02 75) 0%, oklch(0.92 0.05 70) 100%);
+  --gradient-gold: linear-gradient(135deg, var(--gold), var(--curcuma));
+  --gradient-leaf: linear-gradient(160deg, oklch(0.42 0.07 195), oklch(0.28 0.05 195));
+  --shadow-soft: 0 1px 2px oklch(0.2 0.04 195 / 0.06), 0 8px 30px oklch(0.2 0.04 195 / 0.08);
+  --shadow-warm: 0 10px 40px -10px oklch(0.73 0.165 55 / 0.35);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4, .font-display { font-family: var(--font-display); letter-spacing: -0.01em; }
+}
+
+@layer utilities {
+  .bg-hero { background: var(--gradient-hero); }
+  .bg-gold-gradient { background: var(--gradient-gold); }
+  .bg-leaf-gradient { background: var(--gradient-leaf); }
+  .shadow-warm { box-shadow: var(--shadow-warm); }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .text-balance { text-wrap: balance; }
+  .container-wide { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: 1.25rem; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float { animation: float-slow 6s ease-in-out infinite; }
