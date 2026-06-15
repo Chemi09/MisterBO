@@ -5,9 +5,9 @@ import { BRAND, whatsappUrl } from "@/lib/format";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — HB Cosmétique" },
-      { name: "description", content: "Contactez HB Cosmétique à Kinshasa par téléphone, WhatsApp ou Instagram." },
-      { property: "og:title", content: "Contact HB Cosmétique" },
+      { title: `Contact — ${BRAND.name}` },
+      { name: "description", content: `Contactez ${BRAND.name} à Kinshasa par téléphone, WhatsApp ou Instagram.` },
+      { property: "og:title", content: `Contact ${BRAND.name}` },
       { property: "og:description", content: "Une question ? Écrivez-nous." },
     ],
   }),

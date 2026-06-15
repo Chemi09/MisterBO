@@ -5,9 +5,9 @@ import { BRAND } from "@/lib/format";
 export const Route = createFileRoute("/a-propos")({
   head: () => ({
     meta: [
-      { title: "À propos — HB Cosmétique" },
-      { name: "description", content: "HB Cosmétique : savons artisanaux 100% bio fabriqués à Kinshasa. Notre histoire, notre mission, nos engagements." },
-      { property: "og:title", content: "À propos d'HB Cosmétique" },
+      { title: `À propos — ${BRAND.name}` },
+      { name: "description", content: `${BRAND.name} : savons artisanaux 100% bio fabriqués à Kinshasa. Notre histoire, notre mission, nos engagements.` },
+      { property: "og:title", content: `À propos de ${BRAND.name}` },
       { property: "og:description", content: "L'histoire de la marque Savon Mister Bo." },
     ],
   }),

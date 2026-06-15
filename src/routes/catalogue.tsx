@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
 import { fetchProducts } from "@/lib/queries";
+import { BRAND } from "@/lib/format";
 import { ProductCard } from "@/components/ProductCard";
 import { cn } from "@/lib/utils";
 
@@ -14,9 +15,9 @@ export const Route = createFileRoute("/catalogue")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "Boutique — Savons bio Mister Bo | HB Cosmétique" },
+      { title: `Boutique — ${BRAND.name}` },
       { name: "description", content: "Tous nos savons bio : curcuma, riz, et le Pack Duo recommandé. Livraison dans les 24 communes de Kinshasa." },
-      { property: "og:title", content: "Boutique HB Cosmétique" },
+      { property: "og:title", content: `Boutique ${BRAND.name}` },
       { property: "og:description", content: "Découvrez la gamme Savon Mister Bo." },
     ],
   }),

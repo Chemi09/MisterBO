@@ -1,14 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { z } from "zod";
 import { CheckCircle2, MessageCircle } from "lucide-react";
-import { whatsappUrl } from "@/lib/format";
+import { whatsappUrl, BRAND } from "@/lib/format";
 
 export const Route = createFileRoute("/commande-confirmee")({
   validateSearch: z.object({ order: z.string().optional() }),
   head: () => ({
     meta: [
-      { title: "Commande confirmée — HB Cosmétique" },
-      { name: "description", content: "Votre commande HB Cosmétique a bien été enregistrée." },
+      { title: `Commande confirmée — ${BRAND.name}` },
+      { name: "description", content: `Votre commande ${BRAND.name} a bien été enregistrée.` },
       { name: "robots", content: "noindex" },
     ],
   }),

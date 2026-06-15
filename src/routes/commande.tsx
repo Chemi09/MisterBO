@@ -8,18 +8,19 @@ import { useState } from "react";
 import { Loader2, ShieldCheck, Truck } from "lucide-react";
 import { toast } from "sonner";
 import { useCart } from "@/lib/cart";
-import { fetchDeliveryZones, validateCoupon } from "@/lib/queries";
-import { formatCDF, whatsappUrl } from "@/lib/format";
+import { fetchDeliveryZones, validateCoupon, fetchSettings } from "@/lib/queries";
+import { formatCDF, whatsappUrl, BRAND } from "@/lib/format";
 import { createOrder } from "@/lib/orders.functions";
 import { buildInvoicePdf, buildWhatsappMessage } from "@/lib/invoice";
 
-const DELIVERY_FEE = 5000;
+// DELIVERY_FEE now comes from settings (supabase) or falls back to 10000 FC
+
 
 export const Route = createFileRoute("/commande")({
   head: () => ({
     meta: [
-      { title: "Commande — HB Cosmétique" },
-      { name: "description", content: "Finalisez votre commande HB Cosmétique. Livraison 5 000 FC partout à Kinshasa." },
+      { title: `Commande — ${BRAND.name}` },
+      { name: "description", content: `Finalisez votre commande ${BRAND.name}. Livraison calculée à l'étape suivante.` },
     ],
   }),
   component: CheckoutPage,
@@ -49,8 +50,9 @@ function CheckoutPage() {
     resolver: zodResolver(schema),
   });
 
+  const { data: settings } = useQuery({ queryKey: ["settings"], queryFn: () => fetchSettings() });
   const commune = watch("commune");
-  const deliveryFee = DELIVERY_FEE;
+  const deliveryFee = settings?.delivery_fee_cdf ?? 10000; // default 10 000 FC
   const total = Math.max(0, subtotal - discount) + deliveryFee;
 
   if (items.length === 0) {

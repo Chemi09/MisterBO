@@ -8,9 +8,9 @@ import { BRAND, whatsappUrl } from "@/lib/format";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "HB Cosmétique — Savon Mister Bo 100% Bio | Kinshasa RDC" },
-      { name: "description", content: "Découvrez Savon Mister Bo : nos savons artisanaux bio au curcuma et au riz pour une peau éclatante. Fabriqués à Kinshasa. Livraison RDC." },
-      { property: "og:title", content: "HB Cosmétique — Savon Mister Bo 100% Bio" },
+      { title: `${BRAND.name} — Savon Mister Bo 100% Bio | Kinshasa RDC` },
+      { name: "description", content: `Découvrez ${BRAND.product} : nos savons artisanaux bio au curcuma et au riz pour une peau éclatante. Fabriqués à Kinshasa. Livraison RDC.` },
+      { property: "og:title", content: `${BRAND.name} — Savon Mister Bo 100% Bio` },
       { property: "og:description", content: "Un trésor pour la beauté de votre peau." },
     ],
   }),
@@ -46,7 +46,7 @@ function Home() {
                 Acheter maintenant <ArrowRight className="h-4 w-4" />
               </Link>
               <a
-                href={whatsappUrl("Bonjour HB Cosmétique, je suis intéressé(e) par vos savons Mister Bo.")}
+                              href={whatsappUrl(`Bonjour ${BRAND.name}, je suis intéressé(e) par vos savons Mister Bo.`)}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-background px-7 py-3.5 text-sm font-semibold text-primary hover:bg-secondary"
