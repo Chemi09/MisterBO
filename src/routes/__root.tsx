@@ -9,6 +9,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import { BRAND } from "@/lib/format";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CartProvider } from "@/lib/cart";
 import { Header } from "@/components/layout/Header";
@@ -62,17 +63,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "HB Cosmétique — Savon Mister Bo 100% Bio" },
-      { name: "description", content: "Savons artisanaux 100% bio au curcuma et au riz, fabriqués à Kinshasa. Livraison dans les 24 communes de la RDC." },
-      { name: "author", content: "HB Cosmétique" },
-      { property: "og:title", content: "HB Cosmétique — Savon Mister Bo 100% Bio" },
-      { property: "og:description", content: "Savons artisanaux 100% bio au curcuma et au riz, fabriqués à Kinshasa. Livraison dans les 24 communes de la RDC." },
+      { title: `${BRAND.name} — Savon Mister Bo 100% Bio` },
+      { name: "description", content: `Savons artisanaux 100% bio au curcuma et au riz, fabriqués à Kinshasa. Livraison dans les 24 communes de la RDC.` },
+      { name: "author", content: BRAND.name },
+      { property: "og:title", content: `${BRAND.name} — Savon Mister Bo 100% Bio` },
+      { property: "og:description", content: `Savons artisanaux 100% bio au curcuma et au riz, fabriqués à Kinshasa. Livraison dans les 24 communes de la RDC.` },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "HB Cosmétique — Savon Mister Bo 100% Bio" },
-      { name: "twitter:description", content: "Savons artisanaux 100% bio au curcuma et au riz, fabriqués à Kinshasa. Livraison dans les 24 communes de la RDC." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/213e758d-e2aa-4115-99d8-7f0aaa9c6bc6/id-preview-7e185dfc--88a0705e-7c60-4f78-9f11-af075a4a3aa6.lovable.app-1781278390292.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/213e758d-e2aa-4115-99d8-7f0aaa9c6bc6/id-preview-7e185dfc--88a0705e-7c60-4f78-9f11-af075a4a3aa6.lovable.app-1781278390292.png" },
+      { name: "twitter:title", content: `${BRAND.name} — Savon Mister Bo 100% Bio` },
+      { name: "twitter:description", content: `Savons artisanaux 100% bio au curcuma et au riz, fabriqués à Kinshasa. Livraison dans les 24 communes de la RDC.` },
+      { property: "og:image", content: "/images/logo.png" },
+      { name: "twitter:image", content: "/images/logo.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

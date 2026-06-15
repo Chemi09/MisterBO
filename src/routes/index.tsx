@@ -4,13 +4,14 @@ import { ArrowRight, Leaf, Sparkles, ShieldCheck, Heart, Star, MessageCircle } f
 import { fetchProducts, fetchReviews } from "@/lib/queries";
 import { ProductCard } from "@/components/ProductCard";
 import { BRAND, whatsappUrl } from "@/lib/format";
+import { imageForProduct } from "@/lib/images";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "HB Cosmétique — Savon Mister Bo 100% Bio | Kinshasa RDC" },
-      { name: "description", content: "Découvrez Savon Mister Bo : nos savons artisanaux bio au curcuma et au riz pour une peau éclatante. Fabriqués à Kinshasa. Livraison RDC." },
-      { property: "og:title", content: "HB Cosmétique — Savon Mister Bo 100% Bio" },
+      { title: `${BRAND.name} — Savon Mister Bo 100% Bio | Kinshasa RDC` },
+      { name: "description", content: `Découvrez ${BRAND.product} : nos savons artisanaux bio au curcuma et au riz pour une peau éclatante. Fabriqués à Kinshasa. Livraison RDC.` },
+      { property: "og:title", content: `${BRAND.name} — Savon Mister Bo 100% Bio` },
       { property: "og:description", content: "Un trésor pour la beauté de votre peau." },
     ],
   }),
@@ -46,7 +47,7 @@ function Home() {
                 Acheter maintenant <ArrowRight className="h-4 w-4" />
               </Link>
               <a
-                href={whatsappUrl("Bonjour HB Cosmétique, je suis intéressé(e) par vos savons Mister Bo.")}
+                              href={whatsappUrl(`Bonjour ${BRAND.name}, je suis intéressé(e) par vos savons Mister Bo.`)}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-background px-7 py-3.5 text-sm font-semibold text-primary hover:bg-secondary"
@@ -66,7 +67,7 @@ function Home() {
               <div className="absolute -right-10 -top-10 h-72 w-72 rounded-full bg-curcuma/20 blur-3xl" />
               <div className="absolute -bottom-10 -left-10 h-72 w-72 rounded-full bg-leaf-soft blur-3xl" />
               <div className="relative animate-float overflow-hidden rounded-3xl border border-border/60 bg-card shadow-warm">
-                <img src={featured.image_url} alt={featured.name} className="aspect-[4/5] w-full object-cover" />
+                <img src={imageForProduct(featured)} alt={featured.name} className="aspect-[4/5] w-full object-cover" />
               </div>
               <span className="absolute -left-2 top-6 rounded-full bg-accent px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent-foreground shadow-warm">
                 Best-seller

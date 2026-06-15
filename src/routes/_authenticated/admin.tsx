@@ -5,14 +5,15 @@ import { useEffect, useState } from "react";
 import { Loader2, LogOut, ShieldAlert } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import { listAdminOrders, updateOrderStatus, checkIsAdmin } from "@/lib/admin.functions";
+import { listAdminOrders, updateOrderStatus, checkIsAdmin, getSettings, setDeliveryFee } from "@/lib/admin.functions";
+import SettingsPanel from "./SettingsPanel";
 import { formatCDF } from "@/lib/format";
 
 const STATUSES = ["pending", "payment_confirmed", "preparing", "shipped", "delivered", "cancelled"] as const;
 type Status = typeof STATUSES[number];
 
 export const Route = createFileRoute("/_authenticated/admin")({
-  head: () => ({ meta: [{ title: "Admin — HB Cosmétique" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: `Admin — ${process.env.VITE_APP_NAME ?? 'Admin'}` }, { name: "robots", content: "noindex" }] }),
   component: AdminPage,
 });
 
@@ -81,6 +82,12 @@ function AdminPage() {
           <LogOut className="h-4 w-4" /> Déconnexion
         </button>
       </div>
+
+          {/* Settings */}
+          <div className="mt-6 rounded-2xl border border-border bg-card p-4">
+            <h2 className="font-medium text-sm">Paramètres système</h2>
+            <SettingsPanel />
+          </div>
 
       {ordersQuery.isLoading && <div className="mt-10 text-center"><Loader2 className="mx-auto h-5 w-5 animate-spin" /></div>}
 

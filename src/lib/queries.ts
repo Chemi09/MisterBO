@@ -53,5 +53,15 @@ export async function validateCoupon(code: string) {
   return data;
 }
 
+export async function fetchSettings() {
+  const { data, error } = await supabase
+    .from('settings')
+    .select('*')
+    .eq('key', 'delivery_fee_cdf')
+    .maybeSingle();
+  if (error) throw error;
+  return { delivery_fee_cdf: data ? Number(data.value) : null };
+}
+
 export type Product = Awaited<ReturnType<typeof fetchProducts>>[number];
 export type DeliveryZone = Awaited<ReturnType<typeof fetchDeliveryZones>>[number];

@@ -41,3 +41,25 @@ export const checkIsAdmin = createServerFn({ method: "GET" })
     const { data } = await context.supabase.rpc("has_role", { _user_id: context.userId, _role: "admin" });
     return { isAdmin: !!data, userId: context.userId };
   });
+
+// Settings: get and set delivery fee
+export const getSettings = createServerFn({ method: "GET" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    await ensureAdmin(context.supabase, context.userId);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data, error } = await supabaseAdmin.from('settings').select('*').eq('key', 'delivery_fee_cdf').maybeSingle();
+    if (error) throw new Error(error.message);
+    return { delivery_fee_cdf: data ? Number(data.value) : null };
+  });
+
+export const setDeliveryFee = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .inputValidator((d: unknown) => z.object({ value: z.number().min(0) }).parse(d))
+  .handler(async ({ data, context }) => {
+    await ensureAdmin(context.supabase, context.userId);
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { error } = await supabaseAdmin.from('settings').upsert({ key: 'delivery_fee_cdf', value: String(data.value) }, { returning: 'minimal' });
+    if (error) throw new Error(error.message);
+    return { ok: true };
+  });

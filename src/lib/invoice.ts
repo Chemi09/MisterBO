@@ -125,14 +125,14 @@ export function buildInvoicePdf(d: InvoiceData): jsPDF {
 
   doc.setFontSize(9);
   doc.setTextColor(120, 120, 120);
-  doc.text("Merci pour votre confiance — HB Cosmétique", W / 2, 285, { align: "center" });
+  doc.text(`Merci pour votre confiance — ${BRAND.name}`, W / 2, 285, { align: "center" });
 
   return doc;
 }
 
 export function buildWhatsappMessage(d: InvoiceData): string {
   const lines = [
-    `🌿 *Nouvelle commande HB Cosmétique*`,
+    `🌿 *Nouvelle commande ${BRAND.name}*`,
     `N° : *${d.orderNumber}*`,
     ``,
     `👤 ${d.customerName}`,

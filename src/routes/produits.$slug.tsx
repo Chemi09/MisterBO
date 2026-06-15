@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Minus, Plus, ShoppingBag, MessageCircle, ShieldCheck, Star, ArrowLeft, Truck, Leaf } from "lucide-react";
 import { fetchProductBySlug, fetchProducts, fetchReviews } from "@/lib/queries";
-import { formatCDF, whatsappUrl } from "@/lib/format";
+import { formatCDF, whatsappUrl, BRAND } from "@/lib/format";
 import { useCart } from "@/lib/cart";
 import { ProductCard } from "@/components/ProductCard";
 import { toast } from "sonner";
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/produits/$slug")({
   head: ({ loaderData }) => ({
     meta: loaderData?.product
       ? [
-          { title: `${loaderData.product.name} — HB Cosmétique` },
+          { title: `${loaderData.product.name} — ${BRAND.name}` },
           { name: "description", content: loaderData.product.tagline ?? loaderData.product.description.slice(0, 160) },
           { property: "og:title", content: loaderData.product.name },
           { property: "og:description", content: loaderData.product.tagline ?? "" },
@@ -65,7 +65,7 @@ function ProductPage() {
     toast.success(`${product.name} ajouté au panier`);
   };
 
-  const waMessage = `Bonjour HB Cosmétique, je souhaite commander :\n• ${product.name} (x${qty}) — ${formatCDF(product.price_cdf * qty)}\n\nMerci de me confirmer la disponibilité.`;
+  const waMessage = `Bonjour ${BRAND.name}, je souhaite commander :\n• ${product.name} (x${qty}) — ${formatCDF(product.price_cdf * qty)}\n\nMerci de me confirmer la disponibilité.`;
 
   return (
     <div className="container-wide py-8 md:py-12">
@@ -75,7 +75,7 @@ function ProductPage() {
 
       <div className="grid gap-10 lg:grid-cols-2">
         <div className="relative overflow-hidden rounded-3xl bg-cream shadow-soft">
-          <img src={product.image_url} alt={product.name} className="aspect-square w-full object-cover" />
+          <img src={imageForProduct(product)} alt={product.name} className="aspect-square w-full object-cover" />
           {discount > 0 && (
             <span className="absolute right-4 top-4 rounded-full bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground">
               -{discount}%

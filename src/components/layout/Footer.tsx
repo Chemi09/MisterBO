@@ -8,7 +8,9 @@ export function Footer() {
       <div className="container-wide grid gap-10 py-14 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3">
-            <span className="grid h-11 w-11 place-items-center rounded-full bg-cream/15 font-display text-lg backdrop-blur">HB</span>
+            <span className="grid h-11 w-11 place-items-center rounded-full bg-cream/15 font-display text-lg backdrop-blur overflow-hidden">
+              <img src="/images/logo.png" alt={BRAND.name} className="h-10 w-10 object-contain" />
+            </span>
             <div>
               <p className="font-display text-xl">{BRAND.name}</p>
               <p className="text-xs uppercase tracking-[0.18em] text-primary-foreground/70">{BRAND.tagline}</p>
@@ -34,7 +36,7 @@ export function Footer() {
           <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-primary-foreground/60">Contact</p>
           <ul className="space-y-3 text-sm">
             <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0" /> {BRAND.city}, {BRAND.country}</li>
-            <li><a href={whatsappUrl("Bonjour HB Cosmétique")} className="flex items-center gap-2 hover:text-accent"><Phone className="h-4 w-4" /> {BRAND.phone}</a></li>
+            <li><a href={whatsappUrl(`Bonjour ${BRAND.name}`)} className="flex items-center gap-2 hover:text-accent"><Phone className="h-4 w-4" /> {BRAND.phone}</a></li>
             <li className="flex items-center gap-2"><Instagram className="h-4 w-4" /> @{BRAND.instagram}</li>
           </ul>
         </div>

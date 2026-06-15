@@ -1,13 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Minus, Plus, Trash2, ShoppingBag, ArrowRight } from "lucide-react";
 import { useCart } from "@/lib/cart";
-import { formatCDF } from "@/lib/format";
+import { formatCDF, BRAND } from "@/lib/format";
 
 export const Route = createFileRoute("/panier")({
   head: () => ({
     meta: [
-      { title: "Mon panier — HB Cosmétique" },
-      { name: "description", content: "Récapitulatif de votre panier HB Cosmétique avant commande." },
+      { title: `Mon panier — ${BRAND.name}` },
+      { name: "description", content: `Récapitulatif de votre panier ${BRAND.name} avant commande.` },
     ],
   }),
   component: CartPage,
