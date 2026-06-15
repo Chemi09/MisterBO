@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { formatCDF } from "@/lib/format";
 import type { Product } from "@/lib/queries";
+import { imageForProduct } from "@/lib/images";
 
 export function ProductCard({ product }: { product: Product }) {
   const discount =
@@ -16,7 +17,7 @@ export function ProductCard({ product }: { product: Product }) {
     >
       <div className="relative aspect-[4/5] overflow-hidden bg-cream">
         <img
-          src={product.image_url}
+          src={imageForProduct(product)}
           alt={product.name}
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"

@@ -75,7 +75,7 @@ function ProductPage() {
 
       <div className="grid gap-10 lg:grid-cols-2">
         <div className="relative overflow-hidden rounded-3xl bg-cream shadow-soft">
-          <img src={product.image_url} alt={product.name} className="aspect-square w-full object-cover" />
+          <img src={imageForProduct(product)} alt={product.name} className="aspect-square w-full object-cover" />
           {discount > 0 && (
             <span className="absolute right-4 top-4 rounded-full bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground">
               -{discount}%

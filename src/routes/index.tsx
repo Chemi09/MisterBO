@@ -4,6 +4,7 @@ import { ArrowRight, Leaf, Sparkles, ShieldCheck, Heart, Star, MessageCircle } f
 import { fetchProducts, fetchReviews } from "@/lib/queries";
 import { ProductCard } from "@/components/ProductCard";
 import { BRAND, whatsappUrl } from "@/lib/format";
+import { imageForProduct } from "@/lib/images";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -66,7 +67,7 @@ function Home() {
               <div className="absolute -right-10 -top-10 h-72 w-72 rounded-full bg-curcuma/20 blur-3xl" />
               <div className="absolute -bottom-10 -left-10 h-72 w-72 rounded-full bg-leaf-soft blur-3xl" />
               <div className="relative animate-float overflow-hidden rounded-3xl border border-border/60 bg-card shadow-warm">
-                <img src={featured.image_url} alt={featured.name} className="aspect-[4/5] w-full object-cover" />
+                <img src={imageForProduct(featured)} alt={featured.name} className="aspect-[4/5] w-full object-cover" />
               </div>
               <span className="absolute -left-2 top-6 rounded-full bg-accent px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-accent-foreground shadow-warm">
                 Best-seller

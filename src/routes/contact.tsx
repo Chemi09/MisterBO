@@ -22,7 +22,7 @@ export const Route = createFileRoute("/contact")({
       </div>
 
       <div className="mx-auto mt-12 grid max-w-4xl gap-5 md:grid-cols-2">
-        <a href={whatsappUrl("Bonjour HB Cosmétique")} target="_blank" rel="noreferrer" className="group rounded-2xl border border-border bg-card p-6 shadow-soft transition-all hover:-translate-y-1 hover:shadow-warm">
+        <a href={whatsappUrl(`Bonjour ${BRAND.name}`)} target="_blank" rel="noreferrer" className="group rounded-2xl border border-border bg-card p-6 shadow-soft transition-all hover:-translate-y-1 hover:shadow-warm">
           <MessageCircle className="h-7 w-7 text-accent" />
           <h2 className="mt-4 font-display text-xl text-primary">WhatsApp</h2>
           <p className="mt-1 text-sm text-muted-foreground">{BRAND.phone}</p>

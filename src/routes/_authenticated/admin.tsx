@@ -13,7 +13,7 @@ const STATUSES = ["pending", "payment_confirmed", "preparing", "shipped", "deliv
 type Status = typeof STATUSES[number];
 
 export const Route = createFileRoute("/_authenticated/admin")({
-  head: () => ({ meta: [{ title: "Admin — HB Cosmétique" }, { name: "robots", content: "noindex" }] }),
+  head: () => ({ meta: [{ title: `Admin — ${process.env.VITE_APP_NAME ?? 'Admin'}` }, { name: "robots", content: "noindex" }] }),
   component: AdminPage,
 });
 

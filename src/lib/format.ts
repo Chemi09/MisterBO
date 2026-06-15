@@ -12,6 +12,7 @@ export const BRAND = {
   instagram: "misterbo_savons",
   city: "Kinshasa",
   country: "République Démocratique du Congo",
+  logoUrl: "/images/logo.png",
 };
 
 export function whatsappUrl(message: string): string {

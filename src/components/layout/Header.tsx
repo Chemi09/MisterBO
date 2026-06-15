@@ -20,7 +20,7 @@ export function Header() {
       <div className="container-wide flex h-16 items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2 font-display text-xl font-semibold tracking-tight text-primary">
           <span className="grid h-9 w-9 place-items-center rounded-full bg-leaf-gradient text-primary-foreground shadow-soft">
-            <span className="font-display text-sm">HB</span>
+                    <img src="/images/logo.png" alt={BRAND.name} className="h-8 w-8 object-contain" />
           </span>
           <span className="hidden sm:inline">{BRAND.name}</span>
         </Link>
