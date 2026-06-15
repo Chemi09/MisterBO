@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Minus, Plus, ShoppingBag, MessageCircle, ShieldCheck, Star, ArrowLeft, Truck, Leaf } from "lucide-react";
 import { fetchProductBySlug, fetchProducts, fetchReviews } from "@/lib/queries";
 import { formatCDF, whatsappUrl, BRAND } from "@/lib/format";
+import { imageForProduct } from "@/lib/images";
 import { useCart } from "@/lib/cart";
 import { ProductCard } from "@/components/ProductCard";
 import { toast } from "sonner";
